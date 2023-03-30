@@ -25,19 +25,19 @@ public class ListaChatFragment  extends Fragment {
 
         // Inicializa la lista de grupos de chat , con su nombre y miembros
         mChatGroups = new ArrayList<>();
-        mChatGroups.add(new ChatGroup("PMI", Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Pogramacion Movil I", Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
         mChatGroups.add(new ChatGroup("REDES IV", Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("ISI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
-        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Ingenieria de Sotware I",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Computacion en la Nube",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Programacion Movil II",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Arquitectura de Computadoras",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Programacion Web I",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Sistemas Operativos I",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Redes III",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Ingenieria de Sotware II",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Computacion Grafica y Visual",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Mantenimiento de Hardaware y Sotware",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("Programacion Web II",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
 
 
         // Inicializa el adaptador de la lista de chats
