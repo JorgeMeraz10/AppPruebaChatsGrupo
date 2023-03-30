@@ -11,7 +11,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:ignore="NotSibling" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

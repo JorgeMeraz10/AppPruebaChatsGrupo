@@ -29,6 +29,16 @@ public class ListaChatFragment  extends Fragment {
         mChatGroups.add(new ChatGroup("REDES IV", Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
         mChatGroups.add(new ChatGroup("ISI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
         mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+        mChatGroups.add(new ChatGroup("CNI",Arrays.asList("Jorge", "Estefany", "Elsy", "Fabiana")));
+
 
         // Inicializa el adaptador de la lista de chats
         mChatListAdapter = new ListaChatCustomAdapter(getContext(), mChatGroups);
