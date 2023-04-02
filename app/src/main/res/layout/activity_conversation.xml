@@ -36,11 +36,12 @@
             android:hint="Escribe un Mensaje"
             android:inputType="text" />
 
-        <Button
+        <ImageView
             android:id="@+id/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar" />
+            android:padding="8dp"
+            android:src="@drawable/sendbtn"/>
     </LinearLayout>
 
 </LinearLayout>
