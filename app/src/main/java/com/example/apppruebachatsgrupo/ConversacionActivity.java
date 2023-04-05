@@ -1,7 +1,9 @@
 package com.example.apppruebachatsgrupo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +20,13 @@ public class ConversacionActivity extends AppCompatActivity {
     private ListView mChatListView;
     private ArrayList<String> mChatMessages;
     private ArrayAdapter<String> mChatListAdapter;
+
+    private static final int REQUEST_SELECT_IMAGE = 1;
+    private static final int REQUEST_RECORD_AUDIO = 2;
+    private static final int REQUEST_RECORD_VIDEO = 3;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +80,56 @@ public class ConversacionActivity extends AppCompatActivity {
                 showAttachmentOptions(v);
             }
         });
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_SELECT_IMAGE && resultCode == RESULT_OK && data != null) {
+            Uri selectedImageUri = data.getData();
+            // Usa la imagen seleccionada aquí
+
+            if (requestCode == REQUEST_RECORD_AUDIO && resultCode == RESULT_OK && data != null) {
+                // Usa el audio grabado aquí
+            }
+
+            if (requestCode == REQUEST_RECORD_VIDEO && resultCode == RESULT_OK && data != null) {
+                // Usa el video grabado aquí
+            }
+
+            if (requestCode == 1 && resultCode == RESULT_OK) {
+                // Obtiene el archivo URI y el PATH
+                Uri uri = data.getData();
+                String path = uri.getPath();
+
+                // Usar el archivo PATH como se necesite
+                // ...
+            }
+        }
+    }
+
+
+
+    private void selectImageFromGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, REQUEST_SELECT_IMAGE);
+    }
+
+    private void recordAudio() {
+        Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+        startActivityForResult(intent, REQUEST_RECORD_AUDIO);
+    }
+
+    private void recordVideo() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        startActivityForResult(intent, REQUEST_RECORD_VIDEO);
+    }
+
+
+
+    //Metodo para mostrar las opciones y llamar sus metodos funcionales
     public void showAttachmentOptions(View view) {
         PopupMenu popup = new PopupMenu(this, view);
         popup.getMenuInflater().inflate(R.menu.attachment_menu, popup.getMenu());
@@ -81,16 +138,22 @@ public class ConversacionActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_image:
-                        // Handle image option
+                        // llamar Elemento de Imagen
+                        selectImageFromGallery();
                         return true;
                     case R.id.menu_document:
-                        // Handle document option
+                        //Abrir Archivos
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        intent.setType("*/*"); // Permitir seleccionar cualquier tipo de archivo
+                        startActivityForResult(intent, 1);
                         return true;
                     case R.id.menu_audio:
-                        // Handle audio option
+                        // llamar Elemento de Audio
+                        recordAudio();
                         return true;
                     case R.id.menu_video:
-                        // Handle video option
+                        // llamar Elemento de Video
+                        recordVideo();
                         return true;
                     default:
                         return false;
