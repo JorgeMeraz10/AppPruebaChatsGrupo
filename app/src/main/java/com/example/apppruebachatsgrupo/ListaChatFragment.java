@@ -63,7 +63,7 @@ public class ListaChatFragment  extends Fragment {
                 ChatGroup chatGroup = mChatGroups.get(position);
 
                 // Abre el fragmento de chat para el grupo de chat seleccionado
-                openChatFragment(chatGroup);
+               // openChatFragment(chatGroup);
 
                 // crea un Intent para iniciar la actividad de conversación del grupo de chat
                 Intent intent = new Intent(getActivity(), ConversacionActivity.class);
@@ -76,20 +76,7 @@ public class ListaChatFragment  extends Fragment {
         return rootView;
     }
 
-    public void openChatFragment(ChatGroup ChatGroup) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Crea una nueva instancia del fragmento de chat y pasa el grupo de chat seleccionado como argumento
-        ConversacionFragment conversacionFragment = new ConversacionFragment();
-        Bundle args = new Bundle();
-        args.putSerializable("chatGroup", ChatGroup);
-        conversacionFragment.setArguments(args);
-
-        fragmentTransaction.replace(R.id.fragment_container, conversacionFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 }
 
 
