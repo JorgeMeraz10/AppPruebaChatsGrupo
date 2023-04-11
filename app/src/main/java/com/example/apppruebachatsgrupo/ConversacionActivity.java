@@ -1,6 +1,8 @@
 package com.example.apppruebachatsgrupo;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.app.ActivityCompat;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,10 @@ public class ConversacionActivity extends AppCompatActivity {
     private static final int REQUEST_SELECT_IMAGE = 1;
     private static final int REQUEST_RECORD_AUDIO = 2;
     private static final int REQUEST_RECORD_VIDEO = 3;
+    private static final int REQUEST_SELECT_FILE = 4;
+    private static final int REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 5;
+    private static final int REQUEST_PERMISSION_RECORD_AUDIO = 6;
+    private static final int REQUEST_PERMISSION_CAMERA = 7;
 
 
 
@@ -99,7 +106,7 @@ public class ConversacionActivity extends AppCompatActivity {
                 // Usa el video grabado aquí
             }
 
-            if (requestCode == 1 && resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_SELECT_FILE && resultCode == RESULT_OK) {
                 // Obtiene el archivo URI y el PATH
                 Uri uri = data.getData();
                 String path = uri.getPath();
@@ -138,23 +145,60 @@ public class ConversacionActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_image:
-                        // llamar Elemento de Imagen
-                        selectImageFromGallery();
+                        // Verificar si se ha concedido permiso para acceder a la galería
+                        if (ActivityCompat.checkSelfPermission(ConversacionActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            // Si el permiso no se ha concedido, solicitar al usuario que lo conceda
+                            ActivityCompat.requestPermissions(ConversacionActivity.this,
+                                    new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                                    REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
+                        } else {
+                            // Si el permiso se ha concedido, iniciar la actividad para seleccionar una imagen de la galería
+                            selectImageFromGallery();
+                        }
                         return true;
                     case R.id.menu_document:
-                        //Abrir Archivos
-                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                        intent.setType("*/*"); // Permitir seleccionar cualquier tipo de archivo
-                        startActivityForResult(intent, 1);
+                        // Verificar si se ha concedido permiso para acceder a los documentos
+                        if (ActivityCompat.checkSelfPermission(ConversacionActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            // Si el permiso no se ha concedido, solicitar al usuario que lo conceda
+                            ActivityCompat.requestPermissions(ConversacionActivity.this,
+                                    new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                                    REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
+                        } else {
+                            // Si el permiso se ha concedido, iniciar la actividad para seleccionar un archivo de los documentos
+                            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                            intent.setType("*/*"); // Permitir seleccionar cualquier tipo de archivo
+                            startActivityForResult(intent, 1);
+                        }
                         return true;
                     case R.id.menu_audio:
-                        // llamar Elemento de Audio
-                        recordAudio();
+                        // Verificar si se ha concedido permiso para grabar audio
+                        if (ActivityCompat.checkSelfPermission(ConversacionActivity.this, android.Manifest.permission.RECORD_AUDIO)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            // Si el permiso no se ha concedido, solicitar al usuario que lo conceda
+                            ActivityCompat.requestPermissions(ConversacionActivity.this,
+                                    new String[]{android.Manifest.permission.RECORD_AUDIO},
+                                    REQUEST_PERMISSION_RECORD_AUDIO);
+                        } else {
+                            // Si el permiso se ha concedido, iniciar la actividad para grabar audio
+                            recordAudio();
+                        }
                         return true;
                     case R.id.menu_video:
-                        // llamar Elemento de Video
-                        recordVideo();
+                        // Verificar si se ha concedido permiso para acceder a la cámara
+                        if (ActivityCompat.checkSelfPermission(ConversacionActivity.this, android.Manifest.permission.CAMERA)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            // Si el permiso no se ha concedido, solicitar al usuario que lo conceda
+                            ActivityCompat.requestPermissions(ConversacionActivity.this,
+                                    new String[]{Manifest.permission.CAMERA},
+                                    REQUEST_PERMISSION_CAMERA);
+                        } else {
+                            // Si el permiso se ha concedido, iniciar la actividad para grabar un video
+                            recordVideo();
+                        }
                         return true;
+
                     default:
                         return false;
                 }
